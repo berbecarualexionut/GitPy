@@ -20,4 +20,7 @@ def parse_arguments():
 if __name__ == '__main__':
     args = parse_arguments()
     a = Github(args.owner, args.repo, args.resources)
-    a.read()
+    data = a.read()
+    while data is not None:
+        data = a.read()
+

@@ -15,7 +15,6 @@ class Github:
         self.resources = resources
 
         self.entrypoints = {}
-        self.streams = []
 
         # get repository lists for resources
         self.commits = []
@@ -25,8 +24,12 @@ class Github:
         # call additional config from json file
         self.init_conf()
 
+        self.streams = self.init_streams()
+
         # variable that checks if the directory structure is built
         self.built_directories = False
+
+        self.current_stream = None
 
     def init_conf(self):
         """
@@ -49,11 +52,13 @@ class Github:
     def read(self):
         if not self.built_directories:
             self.build_directories()
-        if len(self.streams) == 0:
-            self.init_streams()
-        for stream in self.streams:
-            if stream.opened:
-                stream.write_shard()
+        if not self.current_stream or not self.current_stream.opened:
+            try:
+                self.current_stream = next(self.streams)
+            except StopIteration:
+                return None
+        self.current_stream.write_shard()
+        return True
 
     def init_streams(self):
         for repo in self.repo:
@@ -67,7 +72,7 @@ class Github:
                     # make GET request to GITHUB API, in order to get chunks from request use it as a stream
                     # store stream for later content manipulation
                     logger.info('Start stream for url : {}'.format(url))
-                    self.streams.append(StreamDispatcher(url, file_path))
+                    yield (StreamDispatcher(url, file_path))
 
     def get_repo_info(self, resource):
         """
@@ -99,10 +104,9 @@ class Github:
         owner_directory = self.owner
         repo_directory = self.repo
         resources_directory = self.resources
-        # TODO: rethink how to generate directories
         for repo in repo_directory:
             for resource in resources_directory:
                 director = os.path.join(owner_directory, repo, resource)
-                os.makedirs(director,exist_ok=True)
+                os.makedirs(director, exist_ok=True)
         self.built_directories = True
 

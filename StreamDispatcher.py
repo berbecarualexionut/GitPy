@@ -1,4 +1,7 @@
 import requests
+import logging
+
+logger = logging.getLogger('app')
 
 
 class StreamDispatcher:
@@ -8,16 +11,23 @@ class StreamDispatcher:
 
         self.stream = None
         self.opened = None
+        self.shard = None
 
         self.open_stream()
 
     def open_stream(self):
+        logger.info('Opening stream for url: {}'.format(self.url))
         self.stream = requests.get(self.url, stream=True)
         self.opened = True
+        self.shard = self.stream.iter_content(chunk_size=1024)
 
     def write_shard(self):
-        with open(self.file, 'w+') as f:
-            shard = self.stream.iter_content(chunk_size=1024)
-            if shard:
-                f.write(shard)
-                f.flush()
+        with open(self.file, 'ab') as f:
+            try:
+                shard = next(self.shard)
+                if shard:
+                    f.write(shard)
+                    f.flush()
+            except StopIteration:
+                self.opened = False
+                # self.stream.close()
