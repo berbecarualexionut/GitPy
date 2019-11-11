@@ -4,7 +4,7 @@ import sys
 import logging
 import argparse
 
-logging.basicConfig(filename='app.log  ', filemode='a+', format='%(levelname)s - %(message)s', level=logging.DEBUG)
+logging.basicConfig(filename='app.log  ', filemode='a+', format='%(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger('app')
 
 
@@ -19,4 +19,5 @@ def parse_arguments():
 
 if __name__ == '__main__':
     args = parse_arguments()
-    Github(args.owner, args.repom, args.resources)
+    a = Github(args.owner, args.repo, args.resources)
+    a.read()

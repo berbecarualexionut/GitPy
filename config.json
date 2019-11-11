@@ -1,0 +1,10 @@
+{
+  "github_entrypoint" : "https://api.github.com",
+  "endpoints" : [
+    {
+      "commits": "/repos/{}/{}/commits",
+      "releases": "/repos/{}/{}/releases",
+      "pulls": "/repos/{}/{}/pulls"
+    }
+  ]
+}
