@@ -1,0 +1,16 @@
+INFO - Generating directory structure
+INFO - Opening stream for url: https://api.github.com/repos/berbecarualexionut/GitPy/commits/ab510970b8ba429f0167207c1556cb43707563d2
+INFO - Writing shard to berbecarualexionut/GitPy/commits/ab510970b8ba429f0167207c1556cb43707563d2.json
+INFO - Writing shard to berbecarualexionut/GitPy/commits/ab510970b8ba429f0167207c1556cb43707563d2.json
+INFO - Writing shard to berbecarualexionut/GitPy/commits/ab510970b8ba429f0167207c1556cb43707563d2.json
+INFO - Opening stream for url: https://api.github.com/repos/berbecarualexionut/GitPy/commits/1bf5f949eb6f94c6955e9d3a4b529b842d9063ff
+INFO - Writing shard to berbecarualexionut/GitPy/commits/1bf5f949eb6f94c6955e9d3a4b529b842d9063ff.json
+INFO - Writing shard to berbecarualexionut/GitPy/commits/1bf5f949eb6f94c6955e9d3a4b529b842d9063ff.json
+INFO - Writing shard to berbecarualexionut/GitPy/commits/1bf5f949eb6f94c6955e9d3a4b529b842d9063ff.json
+INFO - Opening stream for url: https://api.github.com/repos/berbecarualexionut/GitPy/commits/24a23de409207195e015bf4adf6fc48ac508ffd1
+INFO - Writing shard to berbecarualexionut/GitPy/commits/24a23de409207195e015bf4adf6fc48ac508ffd1.json
+INFO - Writing shard to berbecarualexionut/GitPy/commits/24a23de409207195e015bf4adf6fc48ac508ffd1.json
+INFO - Writing shard to berbecarualexionut/GitPy/commits/24a23de409207195e015bf4adf6fc48ac508ffd1.json
+INFO - Opening stream for url: https://api.github.com/repos/berbecarualexionut/GitPy/commits/578dfc3f1d3186286d9ce5d55a4034a1c2f01b8b
+INFO - Writing shard to berbecarualexionut/GitPy/commits/578dfc3f1d3186286d9ce5d55a4034a1c2f01b8b.json
+INFO - No pulls for repository: GitPy

@@ -71,7 +71,6 @@ class Github:
                     file_path = os.path.join(self.owner, repo, resource, item) + '.json'
                     # make GET request to GITHUB API, in order to get chunks from request use it as a stream
                     # store stream for later content manipulation
-                    logger.info('Start stream for url : {}'.format(url))
                     yield (StreamDispatcher(url, file_path))
 
     def get_repo_info(self, resource):
